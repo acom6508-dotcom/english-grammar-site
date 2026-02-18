@@ -1,0 +1,37 @@
+main:
+  - name: "Home"
+    url: "/"
+    weight: 1
+
+  - name: "Grammar Lessons"
+    url: "/grammar/"
+    weight: 2
+    children:
+      - name: "Beginner"
+        url: "/grammar/beginner/"
+      - name: "Intermediate"
+        url: "/grammar/intermediate/"
+      - name: "Advanced"
+        url: "/grammar/advanced/"
+
+  - name: "Quizzes"
+    url: "/quizzes/"
+    weight: 3
+
+  - name: "Blog"
+    url: "/blog/"
+    weight: 4
+
+  - name: "Contact"
+    url: "/contact/"
+    weight: 5
+
+footer:
+  - name: "About Us"
+    url: "/about/"
+  - name: "Privacy Policy"
+    url: "/privacy/"
+  - name: "Terms of Service"
+    url: "/terms/"
+  - name: "Sitemap"
+    url: "/sitemap.xml"

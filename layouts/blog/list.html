@@ -1,0 +1,50 @@
+{{ define "main" }}
+<div class="section-page">
+    <div class="container">
+        {{ partial "breadcrumb.html" . }}
+
+        <header class="page-header">
+            <h1 class="page-title">Blog</h1>
+            <p class="page-description">Tips, guides, and insights about English grammar and language learning.</p>
+        </header>
+
+        <div class="blog-list">
+            {{ range .Paginator.Pages }}
+            <article class="blog-list-item">
+                {{ if .Params.image }}
+                <div class="blog-list-image">
+                    <a href="{{ .RelPermalink }}">
+                        <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy" width="400" height="250">
+                    </a>
+                </div>
+                {{ end }}
+                
+                <div class="blog-list-content">
+                    <div class="blog-list-meta">
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                        {{ if .Params.category }}
+                        <span class="meta-separator">•</span>
+                        <span class="blog-category">{{ .Params.category }}</span>
+                        {{ end }}
+                    </div>
+                    
+                    <h2 class="blog-list-title">
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </h2>
+                    
+                    {{ if .Description }}
+                    <p class="blog-list-excerpt">{{ .Description }}</p>
+                    {{ else }}
+                    <p class="blog-list-excerpt">{{ .Summary }}</p>
+                    {{ end }}
+                    
+                    <a href="{{ .RelPermalink }}" class="blog-list-link">Read More →</a>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+
+        {{ partial "pagination.html" . }}
+    </div>
+</div>
+{{ end }}

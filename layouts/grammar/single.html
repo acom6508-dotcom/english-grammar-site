@@ -1,0 +1,106 @@
+{{ define "main" }}
+<article class="grammar-article">
+    <div class="container">
+        <!-- Breadcrumb -->
+        {{ partial "breadcrumb.html" . }}
+
+        <div class="article-layout">
+            <!-- Main Content -->
+            <div class="article-main">
+                <header class="article-header">
+                    {{ if .Params.category }}
+                    <span class="article-category">{{ .Params.category }}</span>
+                    {{ end }}
+                    <h1 class="article-title">{{ .Title }}</h1>
+                    {{ if .Description }}
+                    <p class="article-description">{{ .Description }}</p>
+                    {{ end }}
+                    <div class="article-meta">
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">
+                            Published: {{ .Date.Format "January 2, 2006" }}
+                        </time>
+                        {{ if ne .Date .Lastmod }}
+                        <time datetime="{{ .Lastmod.Format "2006-01-02" }}">
+                            Updated: {{ .Lastmod.Format "January 2, 2006" }}
+                        </time>
+                        {{ end }}
+                    </div>
+                </header>
+
+                <!-- Table of Contents (if enabled) -->
+                {{ partial "toc.html" . }}
+
+                <!-- Article Content -->
+                <div class="article-content">
+                    {{ .Content }}
+                </div>
+
+                <!-- FAQ Section (if exists) -->
+                {{ if .Params.faq }}
+                <section class="faq-section">
+                    <h2 class="faq-title">Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        {{ range .Params.faq }}
+                        <details class="faq-item">
+                            <summary class="faq-question">{{ .question }}</summary>
+                            <div class="faq-answer">{{ .answer | markdownify }}</div>
+                        </details>
+                        {{ end }}
+                    </div>
+                </section>
+                {{ end }}
+
+                <!-- Tags -->
+                {{ if .Params.tags }}
+                <div class="article-tags">
+                    <span class="tags-label">Tags:</span>
+                    {{ range .Params.tags }}
+                    <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                <!-- Next/Previous Navigation -->
+                <nav class="article-nav">
+                    {{ with .PrevInSection }}
+                    <a href="{{ .RelPermalink }}" class="nav-item nav-prev">
+                        <span class="nav-label">← Previous</span>
+                        <span class="nav-title">{{ .Title }}</span>
+                    </a>
+                    {{ end }}
+                    {{ with .NextInSection }}
+                    <a href="{{ .RelPermalink }}" class="nav-item nav-next">
+                        <span class="nav-label">Next →</span>
+                        <span class="nav-title">{{ .Title }}</span>
+                    </a>
+                    {{ end }}
+                </nav>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="article-sidebar">
+                <!-- Quick Links -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Quick Navigation</h3>
+                    <ul class="widget-links">
+                        <li><a href="/grammar/beginner/">Beginner Lessons</a></li>
+                        <li><a href="/grammar/intermediate/">Intermediate Lessons</a></li>
+                        <li><a href="/grammar/advanced/">Advanced Lessons</a></li>
+                        <li><a href="/quizzes/">Practice Quizzes</a></li>
+                    </ul>
+                </div>
+
+                <!-- CTA Widget -->
+                <div class="sidebar-widget widget-cta">
+                    <h3 class="widget-title">Test Your Knowledge</h3>
+                    <p>Ready to practice what you've learned?</p>
+                    <a href="/quizzes/" class="btn btn-small btn-primary">Take a Quiz</a>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Related Posts -->
+        {{ partial "related.html" . }}
+    </div>
+</article>
+{{ end }}

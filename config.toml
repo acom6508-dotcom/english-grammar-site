@@ -1,0 +1,128 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "English Grammar Master - Learn Grammar Online"
+
+# Pagination
+[pagination]
+  pagerSize = 10
+  path = "page"
+
+
+# URLs
+uglyURLs = false
+canonifyURLs = true
+relativeURLs = false
+
+[permalinks]
+  grammar = "/:section/:slug/"
+  blog = "/blog/:slug/"
+  quizzes = "/quizzes/:slug/"
+
+# Taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+# Sitemap configuration
+enableRobotsTXT = true
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+# SEO and Social
+[params]
+  description = "Master English grammar with comprehensive lessons, interactive quizzes, and expert guidance. From beginner to advanced levels."
+  author = "English Grammar Master"
+  keywords = "english grammar, grammar lessons, english learning, grammar exercises, grammar quiz"
+  
+  # Social
+  twitter = "@grammarmaster"
+  facebook = "grammarmaster"
+  
+  # Images
+  logo = "/images/logo.png"
+  defaultImage = "/images/default-og.jpg"
+  favicon = "/images/favicon.ico"
+  
+  # Contact
+  email = "abid.raza99110@gmail.com"
+  
+  # Google Analytics (optional - add your ID)
+  # googleAnalytics = "G-XXXXXXXXXX"
+
+# Menu (can be overridden by data/navigation.yaml)
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  
+  [[menu.main]]
+    name = "Grammar Lessons"
+    url = "/grammar/"
+    weight = 2
+  
+  [[menu.main]]
+    name = "Quizzes"
+    url = "/quizzes/"
+    weight = 3
+  
+  [[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 4
+  
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 5
+
+# Output formats
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+
+# RSS
+[outputFormats.RSS]
+  mediatype = "application/rss+xml"
+  baseName = "feed"
+
+# JSON for search
+[outputFormats.JSON]
+  mediatype = "application/json"
+  baseName = "index"
+  isPlainText = true
+
+# Markup
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "monokai"
+    lineNos = true
+    lineNumbersInTable = true
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+# Image processing
+[imaging]
+  resampleFilter = "Lanczos"
+  quality = 85
+  anchor = "Smart"
+
+# Privacy
+[privacy]
+  [privacy.googleAnalytics]
+    respectDoNotTrack = true
+  [privacy.youtube]
+    privacyEnhanced = true
+
+# Security
+[security]
+  [security.funcs]
+    getenv = ["^HUGO_", "^CI$"]

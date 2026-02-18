@@ -1,0 +1,25 @@
+{{ if not .IsHome }}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        {{ $sections := split .RelPermalink "/" }}
+        {{ $sectionPath := "" }}
+        {{ range $index, $section := $sections }}
+            {{ if and (ne $section "") (ne $section "page") }}
+                {{ $sectionPath = printf "%s%s/" $sectionPath $section }}
+                {{ if eq $index (sub (len $sections) 1) }}
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ humanize $section }}
+                    </li>
+                {{ else }}
+                    <li class="breadcrumb-item">
+                        <a href="{{ $sectionPath | relURL }}">{{ humanize $section }}</a>
+                    </li>
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    </ol>
+</nav>
+{{ end }}

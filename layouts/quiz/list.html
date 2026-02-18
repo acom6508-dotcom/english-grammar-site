@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="section-page">
+    <div class="container">
+        {{ partial "breadcrumb.html" . }}
+
+        <header class="page-header">
+            <h1 class="page-title">Grammar Quizzes</h1>
+            <p class="page-description">Test your English grammar knowledge with our interactive quizzes. Track your progress and improve your skills.</p>
+        </header>
+
+        <div class="quizzes-grid">
+            {{ range .Paginator.Pages }}
+            <article class="quiz-card">
+                <div class="quiz-card-header">
+                    {{ if .Params.difficulty }}
+                    <span class="quiz-difficulty difficulty-{{ .Params.difficulty }}">{{ .Params.difficulty }}</span>
+                    {{ end }}
+                    {{ if .Params.questions }}
+                    <span class="quiz-count">{{ len .Params.questions }} Questions</span>
+                    {{ end }}
+                </div>
+                <h2 class="quiz-card-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h2>
+                {{ if .Description }}
+                <p class="quiz-card-description">{{ .Description }}</p>
+                {{ end }}
+                <div class="quiz-card-footer">
+                    <a href="{{ .RelPermalink }}" class="btn btn-small btn-primary">Start Quiz</a>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+
+        {{ partial "pagination.html" . }}
+    </div>
+</div>
+{{ end }}

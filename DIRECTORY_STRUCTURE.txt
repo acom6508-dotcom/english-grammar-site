@@ -1,0 +1,22 @@
+.
+ layouts
+  partials
+  blog
+  quiz
+  {_default,grammar,quiz,partials}
+  _default
+  grammar
+ archetypes
+ static
+  css
+  {images,audio,css,js}
+  js
+ content
+  blog
+  quizzes
+  grammar
+   advanced
+   beginner
+   {beginner,intermediate,advanced}
+   intermediate
+ data
