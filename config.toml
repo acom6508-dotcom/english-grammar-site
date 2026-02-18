@@ -10,8 +10,8 @@ title = "English Grammar Master - Learn Grammar Online"
 
 # URLs
 uglyURLs = false
-canonifyURLs = true
-relativeURLs = false
+canonifyURLs = false
+relativeURLs = true
 
 [permalinks]
   grammar = "/:section/:slug/"
