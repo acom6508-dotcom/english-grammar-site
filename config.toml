@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://acom6508-dotcom.github.io/english-grammar-site/"
 languageCode = "en-us"
 title = "English Grammar Master - Learn Grammar Online"
 
@@ -10,8 +10,8 @@ title = "English Grammar Master - Learn Grammar Online"
 
 # URLs
 uglyURLs = false
-canonifyURLs = false
-relativeURLs = true
+canonifyURLs = true
+relativeURLs = false
 
 [permalinks]
   grammar = "/:section/:slug/"
