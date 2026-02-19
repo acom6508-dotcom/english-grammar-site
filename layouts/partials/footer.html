@@ -58,5 +58,5 @@
 <!-- Scripts -->
 <script src="{{ "js/main.js" | relURL }}" defer></script>
 {{ if eq .Type "quiz" }}
-<script src="/js/quiz.js" defer></script>
+<script src="{{ "js/quiz.js" | relURL }}" defer></script>
 {{ end }}
