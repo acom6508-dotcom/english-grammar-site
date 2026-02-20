@@ -1,8 +1,0 @@
-{{ if and .Params.toc (gt (len .TableOfContents) 100) }}
-<aside class="toc-container">
-    <h2 class="toc-title">Table of Contents</h2>
-    <nav class="toc">
-        {{ .TableOfContents }}
-    </nav>
-</aside>
-{{ end }}
